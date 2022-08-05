@@ -1,4 +1,4 @@
-const Result = requere("./Result")
+const Result = require("./Result")
 
 
 class Handler {
@@ -8,12 +8,12 @@ class Handler {
                 let weight = event.queryStringParameters.weight;
                 let height = event.queryStringParameters.height;
                 if (isNaN(weight) || isNaN(height)){
-                    return Result.BadRequest_400("weight or height is not a number")
+                    return new Result.BadRequest_400("weight or height is not a number")
                 }
                 let bmiResult = await this.bmiCalcService.performBmiCalculation(weight, height);
-                return Result.OK_200(bmiResult)
+                return new Result.OK_200(bmiResult)
             } catch (e){
-                return Result.InternalServerError_500(e)
+                return new Result.InternalServerError_500(e)
             }
         };
         this.bmiCalcService = bmiCalcService;
