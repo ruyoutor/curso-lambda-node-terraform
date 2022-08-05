@@ -1,9 +1,11 @@
 const Result = require("./Result")
+const logger = require('../logger/Logger').Logger;
 
 
 class Handler {
     constructor(bmiCalcService){
         this.handleCalculation = async (event, context, callback) => {
+            logger.info('Handler#handleCalculation: ' + JSON.stringify(event));
             try{
                 let weight = event.queryStringParameters.weight;
                 let height = event.queryStringParameters.height;
@@ -13,6 +15,7 @@ class Handler {
                 let bmiResult = await this.bmiCalcService.performBmiCalculation(weight, height);
                 return new Result.OK_200(bmiResult)
             } catch (e){
+                logger.error(`Handler#handleCalculation: error=${e}`);
                 return new Result.InternalServerError_500(e)
             }
         };
