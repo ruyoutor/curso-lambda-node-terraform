@@ -4,7 +4,8 @@
   "description": "bmi calc",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "nodemon": "nodemon local/local.lambda.js"
   },
   "keywords": [
     "bmi"
