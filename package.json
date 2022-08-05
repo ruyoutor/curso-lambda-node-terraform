@@ -1,0 +1,18 @@
+{
+  "name": "bmicalculator",
+  "version": "1.0.0",
+  "description": "bmi calc",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "bmi"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^28.1.3",
+    "jest-html-reporter": "^3.6.0"
+  }
+}

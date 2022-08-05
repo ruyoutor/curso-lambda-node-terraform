@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: BMI Calculator
+  description: BMI Calculator
+  termsOfService: http://bmicompany.io/terms/
+  contact:
+    email: name@bmicompany.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+servers:
+  - url: bmicalc.bmicompany.io
+tags:
+  - name: bmi
+    description: BMI Calculator
+paths:
+  /bmi:
+    get:
+      tags:
+        - bmi
+      summary: BMI Calculator
+      description: BMI Calculator
+      operationId: getBMI
+      parameters:
+        - name: weight
+          in: query
+          description: height [kg]
+          required: true
+          schema:
+            type: number
+        - name: height
+          in: query
+          description: height [cm]
+          required: true
+          schema:
+            type: number            
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BMI'          
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server (lambda) error
+components:
+  schemas:
+    BMI:
+      type: object
+      required: 
+        - bmi
+      properties:
+        name:
+          type: number
